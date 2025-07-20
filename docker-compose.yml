@@ -1,0 +1,12 @@
+
+services:
+  app:
+    build: .
+    container_name: studybuddy_app
+    ports:
+      - "9013:9013"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    restart: unless-stopped
