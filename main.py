@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
-from app.services.ai_suggestions.ai_suggestions_route import router as suggestion_router
+from app.services.summary.summary_route import router as summary_router
 
 app = FastAPI()
 
@@ -15,7 +15,7 @@ app.add_middleware(
 )
 
 
-app.include_router(suggestion_router)
+app.include_router(summary_router)
 
 
 @app.get("/")
@@ -24,5 +24,5 @@ async def root():
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.1.0", port=8085, reload=True)
+    uvicorn.run("main:app", host="127.0.1.0", port=9013, reload=True)
 
