@@ -6,7 +6,7 @@ from .story_schema import story_response
 
 load_dotenv ()
 
-class Summary:
+class Story:
     def __init__(self):
         self.client=openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     
@@ -17,7 +17,7 @@ class Summary:
         return response
     
     def create_prompt (self)->str:
-        return f""" Your job is to Summarize the text you are given"""
+        return f""" Your job is to create stories you are given"""
     
     def get_openai_response (self, prompt:str, data:str)->str:
         completion =self.client.chat.completions.create(
