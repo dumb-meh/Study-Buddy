@@ -2,7 +2,7 @@ import os
 import json
 import openai
 from dotenv import load_dotenv
-from .story_schema import story_response
+from .task_suggestion import task_suggestion_response
 
 load_dotenv ()
 
@@ -10,7 +10,7 @@ class Story:
     def __init__(self):
         self.client=openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     
-    def create_story(self, input_data:str)->story_response:
+    def get_suggestion(self, input_data:str)->task_suggestion_response:
         prompt=self.create_prompt()
         data=input_data
         response=self.get_openai_response (prompt,data)
