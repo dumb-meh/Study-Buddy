@@ -2,15 +2,15 @@ import os
 import json
 import openai
 from dotenv import load_dotenv
-from .task_suggestion_schema import task_suggestion_response
+from .flashcard_quiz_schema import flashcard_quiz_response
 
 load_dotenv ()
 
-class TaskSuggestion:
+class FlashCard_Quiz:
     def __init__(self):
         self.client=openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     
-    def get_suggestion(self, input_data:str)->task_suggestion_response:
+    def generate_flashcard_quiz(self, input_data:str)->flashcard_quiz_response:
         prompt=self.create_prompt()
         data=input_data
         response=self.get_openai_response (prompt,data)
@@ -27,14 +27,5 @@ class TaskSuggestion:
         )
         return completion.choices[0].message.content
     
-    def ai_generate_image(image_prompt: str) -> str:
-        response = self.client.images.generate(
-            model="dall-e-3", 
-            prompt=image_prompt,
-            n=1,
-            size="1024x1024",
-            quality="standard", 
-            style="natural" 
-        )
 
 

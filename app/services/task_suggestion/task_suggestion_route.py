@@ -1,11 +1,11 @@
 from fastapi import APIRouter, HTTPException, Body
-from .task_suggestion import Suggestion
-from .task_suggestion import task_suggestion_response
+from .task_suggestion import TaskSuggestion
+from .task_suggestion_schema import task_suggestion_response
 
 router= APIRouter()
-summary= Suggestion()
+summary= TaskSuggestion()
 
-@router.post("/summary",response_model=task_suggestion_response)
+@router.post("/suggestion",response_model=task_suggestion_response)
 async def get_summary():
     try:
         response=summary.get_suggestion(request_data)
