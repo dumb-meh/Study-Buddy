@@ -2,15 +2,15 @@ import os
 import json
 import openai
 from dotenv import load_dotenv
-from .task_suggestion_schema import task_suggestion_response
+from .empowerment_schema import empowerment_response
 
 load_dotenv ()
 
-class TaskSuggestion:
+class Empowerment:
     def __init__(self):
         self.client=openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     
-    def get_suggestion(self, input_data:str)->task_suggestion_response:
+    def empowerment_tasks (self, input_data:str)->empowerment_response:
         prompt=self.create_prompt()
         data=input_data
         response=self.get_openai_response (prompt,data)
@@ -27,4 +27,5 @@ class TaskSuggestion:
         )
         return completion.choices[0].message.content
     
+
 
