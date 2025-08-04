@@ -6,7 +6,7 @@ router= APIRouter()
 mnemonic=Mnemonic()
 
 @router.post("/mnemonic",response_model=mnemonic_reponse)
-async def get_summary(request_data: str = Body(..., media_type="text/plain")):
+async def get_mnemonic(request_data: str = Body(..., media_type="text/plain")):
     try:
         response=mnemonic.get_mnemonic(request_data)
         return mnemonic_reponse (response=response)

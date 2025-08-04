@@ -5,8 +5,8 @@ from .affirmation_schema import affirmation_response
 router= APIRouter()
 story= Affirmation()
 
-@router.post("/story",response_model=affirmation_response)
-async def get_summary(request_data: str = Body(..., media_type="text/plain")):
+@router.post("/affirmation",response_model=affirmation_response)
+async def get_affirmation(request_data: str = Body(..., media_type="text/plain")):
     try:
         response=story.create_story(request_data)
         return affirmation_response (response=response)
